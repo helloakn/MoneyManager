@@ -8,8 +8,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 
-import HomeScreen from '../Screens/Home/HomeScreen';
-import AccountScreen from '../Screens/Account/AccountScreen';
+
+//import HomeScreen from '../Screens/Home/HomeScreen';
+
+//import AccountListScreen from '../Screens/Account/Listing/AccountListScreen';
+//import AccountDetailScreen from '../Screens/Account/Detail/AccountDetailScreen';
+import {AccountListScreen,AccountDetailScreen} from '../Screens/Account';
+//import {AccountDetailScreen} from '../Screens/Account';
 
 import TabBar from '../Components/TabBar';
 
@@ -26,13 +31,20 @@ function SettingsScreen() {
   }
 
 
-
-  function HomeTabs() {
+function AccountTabs(){
+    return(
+        <Stack.Navigator initialRouteName={"HomeTabs"} screenOptions={{headerShown:false}}>
+            <Stack.Screen name="AccountListScreen" component={AccountListScreen} options={{ headerShown: false,}}/>
+            <Stack.Screen name="AccountDetailScreen" component={AccountDetailScreen} options={{ headerShown: false,}}/>
+        </Stack.Navigator>
+    );
+}
+  function InitTabs() {
     return (
         <Tab.Navigator initialRouteName={"AccountScreen"} tabBar={props => <TabBar {...props} />} >
-            <Tab.Screen name="AccountScreen" component={AccountScreen} options={{headerShown: false,}}/>
+            <Tab.Screen name="AccountTabs" component={AccountTabs} options={{headerShown: false,}}/>
             <Tab.Screen name="CategoryScreen" component={SettingsScreen} options={{headerShown: false,}}/>
-            <Tab.Screen name="analytics" component={SettingsScreen} options={{headerShown: false,}}/>
+            <Tab.Screen name="SettingScreen" component={SettingsScreen} options={{headerShown: false,}}/>
       </Tab.Navigator>
     );
   }
@@ -41,10 +53,10 @@ export default function Navigator() {
     return (
         <>
         <NavigationContainer>
-      <Stack.Navigator initialRouteName={"HomeTabs"} screenOptions={{headerShown:false}}>
-        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ headerShown: false,}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+        <Stack.Navigator initialRouteName={"InitTabs"} screenOptions={{headerShown:false}}>
+            <Stack.Screen name="InitTabs" component={InitTabs} options={{ headerShown: false,}}/>
+        </Stack.Navigator>
+        </NavigationContainer>
       </>
     );
   }

@@ -4,12 +4,13 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,StatusBar,SafeAreaView,FlatList
+  StyleSheet,StatusBar,SafeAreaView,FlatList,TouchableOpacity
 } from 'react-native';
 
-import MainLayout from "../../Layouts/MainLayout";
+import MainLayout from '../../../Layouts/MainLayout';
 
-import AccountContainer from "../../Components/Listing/AccountContainer";
+
+import AccountContainer from "../../../Components/Listing/AccountContainer";
 
 const DATA = [
   {
@@ -72,10 +73,17 @@ const styles = StyleSheet.create({
 
 
 
-export default class AccountScreen extends React.Component {
+export default class AccountListScreen extends React.Component {
+
+    onAccountPress=()=>{
+      this.props.navigation.navigate('AccountDetailScreen');
+    }
+
     render() {
       const renderItem = ({ item }) => (
+        <TouchableOpacity onPress={this.onAccountPress} >
         <AccountContainer title={item.title} />
+        </TouchableOpacity>
       );
         return(
           <MainLayout title="Account" navigation={this.props.navigation}>

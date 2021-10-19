@@ -1,4 +1,5 @@
-import {AccountScreen} from './AccountScreen';
+import AccountListScreen from './Listing/AccountListScreen';
+import AccountDetailScreen from './Detail/AccountDetailScreen';
 export {
-    AccountScreen
+    AccountListScreen,AccountDetailScreen
 }

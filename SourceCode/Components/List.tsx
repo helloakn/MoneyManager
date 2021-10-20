@@ -22,7 +22,7 @@ export default function List({ data }: { data: Data[] }) {
           { useNativeDriver: true }
         )}
         data={data}
-        keyExtractor={(item) => item.key}
+        keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => {
           //Normal Animation
           const inputRange = [
@@ -47,10 +47,11 @@ export default function List({ data }: { data: Data[] }) {
                 transform: [{ scale: scale }, { translateX: Offset }],
                 opacity: opacity,
               }}
+              key={item.id}
             >
               <Surface style={styles.surface}>
                 <View style={{ flex: 0.2, justifyContent: "center",alignItems:'center' }}>
-                    <FontAwesome style={{color:(item.type=='Income'?"green":"red"),fontSize:20}} icon={(item.type=='Income'?SolidIcons.sortAmountUp:SolidIcons.sortAmountDownAlt)} />
+                    <FontAwesome style={{color:(item.type=='Income'?"green":"red"),fontSize:30}} icon={(item.type=='Income'?SolidIcons.sortAmountUp:SolidIcons.sortAmountDownAlt)} />
                 </View>
                 <View
                   style={{
@@ -80,10 +81,10 @@ export default function List({ data }: { data: Data[] }) {
                     flex: 0.2,
                     flexDirection: "column",
                     justifyContent: "center",
-                    alignItems:'center'
+                    alignItems:'flex-end'
                   }}
                 >
-                    <FontAwesome style={{color:(item.type=='Income'?"green":"red"),fontSize:30}} icon={(item.type=='Income'?SolidIcons.arrowAltCircleRight:SolidIcons.arrowAltCircleRight)} />
+                    <FontAwesome style={{color:(item.type=='Income'?"#F4E1FF":"#F4E1FF"),fontSize:30}} icon={(item.type=='Income'?SolidIcons.chevronCircleRight:SolidIcons.chevronCircleRight)} />
                 </View>
               </Surface>
             </Animated.View>

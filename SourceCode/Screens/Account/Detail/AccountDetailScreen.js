@@ -14,46 +14,47 @@ import List from "../../../Components/List";
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: '1bd7acbea-c1b1-46c42-aed5-3ad53abb28ba',
     title: 'Expense',
     type: 'Expense',
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '23ac68afc-c605-48d53-a4f8-fbd91aa97f63',
     title: 'Income',
     type: 'Income',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145322571e29d72',
+    id: '358694a0f-3da1-471f-bd96-1455322571e29d72',
     title: 'Expense',
     type: 'Expense',
   },
   {
-    id: '586942a0f-3da1-471f-bd96-145571e229d72',
+    id: '45869426a0f-3da1-471f-bd976-145571e229d72',
     title: 'Income',
     type: 'Income',
   },
   {
-    id: '58694a0f-3da1-471f-b2d96-145571e29d72',
+    id: '55869423a0f-3da1-471f-b213d96-145571e29d72',
     title: 'Expense',
     type: 'Expense',
   },
   {
-    id: '58694a0f-3da1-471f-b33d96-145571e29d72',
+    id: '658694a0f-3d1a1-4711f-b33d96-145571e29d72',
     title: 'Expense', type: 'Expense',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-1455731e29d72',
+    id: '758694a0f-3da1-471f-1d96-1455731e29d72',
     title: 'Expense',
     type: 'Expense',
   },
   {
-    id: '58694a0f-3da1-4713f-bd96-145571e29d72',
+    id: '858694a0f-3da1-4713f-bd96-1451571e29d72',
     title: 'Income',
     title: 'Income',
   },
   {
-    id: '58694a0f-3d3a1-471f-bd96-145571e29d72',
+    id: '95811694a0f-3d3a1-471f-bd96-145571e29d72',
+    title: 'Expense',
     title: 'Expense',
   },
 ];
@@ -87,11 +88,7 @@ export default class AccountDetailScreen extends React.Component {
     }
 
     render() {
-      const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={this.onAccountPress} >
-        <AccountContainer title={item.title} />
-        </TouchableOpacity>
-      );
+   
         return(
           <MainLayout title="AccountDetailScreen" navigation={this.props.navigation}>
             <SafeAreaView style={styles.container}>

@@ -1,16 +1,20 @@
 
 import React from 'react';
 
-import {
+import {Dimensions,
   View,
   Text,
   StyleSheet,StatusBar,SafeAreaView,FlatList,TouchableOpacity
 } from 'react-native';
 
+import styled from 'styled-components/native';
+
 import MainLayout from '../../../Layouts/MainLayout';
 
 
 import List from "../../../Components/List";
+let screenWidth = Dimensions.get("window").width-40;
+
 
 const DATA = [
   {
@@ -80,6 +84,86 @@ const styles = StyleSheet.create({
 });
 
 
+const Header = styled.View`
+height: 30%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+// justifyContent:center;
+justifyContent:space-around;
+`
+const HeaderLeft = styled.View`
+height: 100%;
+width: 60%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:center;
+`
+const HeaderRight = styled.View`
+height: 70%;
+width: 40%;
+display:flex;
+flexDirection:column;
+alignItems: center;
+justifyContent:space-between;;
+`
+const MessageContainer = styled.View`
+top:5px;
+height:20%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:center;
+`
+  const MessageContainerLeft = styled.View`
+  height:100%;
+  width: 20%;
+  display:flex;
+  flexDirection:row;
+  alignItems: center;
+  justifyContent:center;
+  `
+  const MessageCircle = styled.View`
+    height:10px;
+    width: 10px;
+    borderRadius:50px;
+    backgroundColor:${props=>props.color};
+  `
+  const MessageContainerRight = styled.View`
+  height:100%;
+  width: 80%;
+  display:flex;
+  flexDirection:column;
+  alignItems: flex-start;
+  justifyContent:center;
+  `
+const ButtonContainer = styled.View`
+height: 15%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:space-around;
+`
+const Body = styled.View`
+height: 50%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+// justifyContent:center;
+justifyContent:space-around;
+`
+
+
+import ButtonAddIncome from '../../../Components/Buttons/ButtonAddIncome';
+import ButtonAddExpense from '../../../Components/Buttons/ButtonAddExpense';
+import ButtonViewTransaction from '../../../Components/Buttons/ButtonViewTransaction';
+
+import PieChart from "../../../Components/Charts/PieChart";
 
 export default class AccountDetailScreen extends React.Component {
 
@@ -87,13 +171,75 @@ export default class AccountDetailScreen extends React.Component {
       this.props.navigation.navigate('CategoryScreen');
     }
 
+    onPressViewTransactions=()=>{
+      this.props.navigation.navigate('TransactionListScreen');
+    }
+
     render() {
-   
+      
+      
         return(
           <MainLayout title="AccountDetailScreen" navigation={this.props.navigation}>
-            <SafeAreaView style={styles.container}>
-            <List data={DATA} />
-          </SafeAreaView>
+            <Header>
+              <HeaderLeft>
+                <PieChart />
+              </HeaderLeft>
+              <HeaderRight>
+
+                <MessageContainer>
+                  <MessageContainerLeft>
+                    <MessageCircle color="#76DF76"/>
+                  </MessageContainerLeft>
+                  <MessageContainerRight>
+                    <Text>Income</Text>
+                    <Text>300,000,000</Text>
+                  </MessageContainerRight>
+                </MessageContainer>
+
+                <MessageContainer>
+                  <MessageContainerLeft>
+                    <MessageCircle color="#EF5C5C" />
+                  </MessageContainerLeft>
+                  <MessageContainerRight>
+                    <Text>Expend</Text>
+                    <Text>200,000,000</Text>
+                  </MessageContainerRight>
+                </MessageContainer>
+
+
+                <MessageContainer>
+                  <MessageContainerLeft>
+                    <MessageCircle color="#AE66D8" />
+                  </MessageContainerLeft>
+                  <MessageContainerRight>
+                    <Text>Balance</Text>
+                    <Text>100,000,000</Text>
+                  </MessageContainerRight>
+                </MessageContainer>
+
+              </HeaderRight>
+              
+            </Header>
+            
+            <ButtonContainer>
+              <TouchableOpacity style={{alignItems: 'center',width:'30%',height:'100%'}} onPress={this.onPressViewTransactions}>
+                <ButtonAddIncome />
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{alignItems: 'center',width:'30%',height:'100%'}} onPress={this.onPressViewTransactions}>
+                <ButtonAddExpense />
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{alignItems: 'center',width:'30%',height:'100%'}} onPress={this.onPressViewTransactions}>
+                <ButtonViewTransaction />
+              </TouchableOpacity>
+            </ButtonContainer>
+            
+            <Body>
+                <SafeAreaView style={styles.container}>
+                <List data={DATA} />
+              </SafeAreaView>
+            </Body>
         </MainLayout>
         );
     }

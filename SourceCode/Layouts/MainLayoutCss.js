@@ -11,17 +11,16 @@ const MainHeader = styled.View`
     backgroundColor:#AE66D8;
 `
         const MainHeaderTop = styled.View`
-            height: 50%;
+            height: 40%;
             width: 100%;
             backgroundColor:#AE66D8;
         `
         const MainHeaderBottom = styled.View`
-            height: 50%;
+            height: 60%;
             width: 100%;
             display:flex;
             flexDirection:row;
             alignItems: center;
-           // justifyContent:center;
            justifyContent:space-around;
         `
         const HeaderTitleContainer = styled.View`
@@ -49,7 +48,7 @@ const MainHeader = styled.View`
            
         `
 const MainBody = styled.View`
-    height: 75%;
+    height: 90%;
     width: 100%;
     backgroundColor:#F4E1FF;
     alignItems: center;

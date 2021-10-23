@@ -9,12 +9,8 @@ const Stack = createNativeStackNavigator();
 
 
 
-//import HomeScreen from '../Screens/Home/HomeScreen';
-
-//import AccountListScreen from '../Screens/Account/Listing/AccountListScreen';
-//import AccountDetailScreen from '../Screens/Account/Detail/AccountDetailScreen';
-import {AccountListScreen,AccountDetailScreen} from '../Screens/Account';
-//import {AccountDetailScreen} from '../Screens/Account';
+import {AccountListScreen,AccountDetailScreen,TransactionListScreen} from '../Screens/Account';
+import {CategoryListScreen} from '../Screens/Category';
 
 import TabBar from '../Components/TabBar';
 
@@ -33,17 +29,27 @@ function SettingsScreen() {
 
 function AccountTabs(){
     return(
-        <Stack.Navigator initialRouteName={"HomeTabs"} screenOptions={{headerShown:false}}>
+        <Stack.Navigator initialRouteName={"AccountListScreen"} screenOptions={{headerShown:false}}>
             <Stack.Screen name="AccountListScreen" component={AccountListScreen} options={{ headerShown: false,}}/>
             <Stack.Screen name="AccountDetailScreen" component={AccountDetailScreen} options={{ headerShown: false,}}/>
+            <Stack.Screen name="TransactionListScreen" component={TransactionListScreen} options={{ headerShown: false,}}/>
         </Stack.Navigator>
     );
 }
+
+function CategoryTabs(){
+    return(
+        <Stack.Navigator initialRouteName={"CategoryListScreen"} screenOptions={{headerShown:false}}>
+            <Stack.Screen name="CategoryListScreen" component={CategoryListScreen} options={{ headerShown: false,}}/>
+        </Stack.Navigator>
+    );
+}
+
   function InitTabs() {
     return (
-        <Tab.Navigator initialRouteName={"AccountScreen"} tabBar={props => <TabBar {...props} />} >
+        <Tab.Navigator initialRouteName={"AccountTabs"} tabBar={props => <TabBar {...props} />} >
             <Tab.Screen name="AccountTabs" component={AccountTabs} options={{headerShown: false,}}/>
-            <Tab.Screen name="CategoryScreen" component={SettingsScreen} options={{headerShown: false,}}/>
+            <Tab.Screen name="CategoryScreen" component={CategoryTabs} options={{headerShown: false,}}/>
             <Tab.Screen name="SettingScreen" component={SettingsScreen} options={{headerShown: false,}}/>
       </Tab.Navigator>
     );

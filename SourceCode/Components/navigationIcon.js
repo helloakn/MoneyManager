@@ -14,17 +14,17 @@ const  NavigationIcon = ({route, isFocused}: NavigationIconProps) => {
     
     switch (route) {
       case "home":
-        return isFocues?<FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.userPlus} />:<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.user} />
+        return isFocues?<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.userPlus} />:<FontAwesome style={{color:'#AE66D8',fontSize:20}} icon={SolidIcons.user} />
       case "analytics":
-        return isFocues?<FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.user} />:<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.user} />
+        return isFocues?<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.user} />:<FontAwesome style={{color:'#AE66D8',fontSize:20}} icon={SolidIcons.user} />
       case "AccountTabs":
-        return isFocues?<FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.users} />: <FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.users} />
+        return isFocues?<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.users} />: <FontAwesome style={{color:'#AE66D8',fontSize:20}} icon={SolidIcons.users} />
       case "AccountScreen":
-        return isFocues?<FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.users} />: <FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.users} />  
+        return isFocues?<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.users} />: <FontAwesome style={{color:'#AE66D8',fontSize:20}} icon={SolidIcons.users} />  
       case "SettingScreen":
-        return isFocues?<FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.cog} />:<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.cog} />
+        return isFocues?<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.cog} />:<FontAwesome style={{color:'#AE66D8',fontSize:20}} icon={SolidIcons.cog} />
         case "CategoryScreen":
-        return isFocues?<FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.layerGroup} />:<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.layerGroup} />
+        return isFocues?<FontAwesome style={{color:'#563469',fontSize:20}} icon={SolidIcons.layerGroup} />:<FontAwesome style={{color:'#AE66D8',fontSize:20}} icon={SolidIcons.layerGroup} />
       default:
         break;
     }

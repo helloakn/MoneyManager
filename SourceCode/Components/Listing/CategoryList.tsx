@@ -12,7 +12,7 @@ interface Data {
   avatar: string;
 }
 
-export default function List({ data }: { data: Data[] }) {
+export default function CategoryList({ data }: { data: Data[] }) {
   const scrollY = React.useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
@@ -51,31 +51,24 @@ export default function List({ data }: { data: Data[] }) {
             >
               <Surface style={styles.surface}>
                 <View style={{ flex: 0.2, justifyContent: "center",alignItems:'center' }}>
-                    <FontAwesome style={{color:(item.type=='Income'?"green":"red"),fontSize:30}} icon={(item.type=='Income'?SolidIcons.sortAmountUp:SolidIcons.sortAmountDownAlt)} />
+                    <FontAwesome style={{color:"#AE66D8",fontSize:30}} icon={item.icon} />
                 </View>
+
                 <View
                   style={{
                     flex: 0.6,
                     flexDirection: "column",
                     justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   
-                  <View style={{height:'50%',justifyContent: "center"}}>
-                    <Text style={{ fontSize: 14, fontFamily:"Ropa Sans" ,color:(item.type=='Income'?"green":"red")}}>
-                        {item.title} : Food
-                    </Text>
-                    </View>
-                  <View style={{height:'50%',display:'flex',flexDirection: 'row',justifyContent: "center",alignItems: "center"}}>
-                  
-                        <View style={{width:'50%'}}>
-                            <Text style={{ fontFamily:"Ropa Sans",fontSize: 14 }}>$ 100,000</Text>
-                        </View>
-                        <View style={{width:'50%'}}>
-                            <Text style={{ fontSize: 14 ,textAlign: 'right' }}>2 nov 2021</Text>
-                        </View>
+                 
+                  <View style={{height:'100%',width:'100%',display:'flex',flexDirection: 'row',alignItems: "center"}}>
+                    <Text style={{ fontSize: 20 ,fontFamily:"Ropa Sans",textAlign: 'left' }}>{item.name}</Text>
                   </View>
                 </View>
+
                 <View
                   style={{
                     flex: 0.2,
@@ -84,7 +77,7 @@ export default function List({ data }: { data: Data[] }) {
                     alignItems:'flex-end'
                   }}
                 >
-                    <FontAwesome style={{color:(item.type=='Income'?"#F4E1FF":"#F4E1FF"),fontSize:30}} icon={(item.type=='Income'?SolidIcons.chevronCircleRight:SolidIcons.chevronCircleRight)} />
+                    <FontAwesome style={{color:"#AE66D8",fontSize:30}} icon={SolidIcons.chevronCircleRight} />
                 </View>
               </Surface>
             </Animated.View>
@@ -101,7 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   surface: {
-    height: height * 0.1,
+    height: height * 0.09,
     marginTop: 15,
     padding: 8,
     marginHorizontal: 10,

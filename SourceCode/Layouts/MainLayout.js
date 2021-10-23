@@ -43,12 +43,21 @@ export default class MainLayout extends React.Component {
 
                    </MainHeaderTop>
                    <MainHeaderBottom>
-                       <HeaderTitleContainer>
-                           <HeaderTitleCaption>{this.props.title}</HeaderTitleCaption>
-                       </HeaderTitleContainer>
-                       <HeaderIcon>
-                            <FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.userPlus} />
-                       </HeaderIcon>
+                       {
+                           (this.props.header?
+                            this.props.header
+                           : 
+                           <>
+                            <HeaderTitleContainer>
+                                    <HeaderTitleCaption>{this.props.title}</HeaderTitleCaption>
+                                </HeaderTitleContainer>
+                                <HeaderIcon>
+                                        <FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.userPlus} />
+                                </HeaderIcon>
+                           </>
+                           )
+                       }
+                       
                    </MainHeaderBottom>
                 </MainHeader>
 
@@ -57,11 +66,6 @@ export default class MainLayout extends React.Component {
                         this.props.children
                     }
                 </MainBody>
-                <MainFooter>
-                    <MainFooterADMOBContainer>
-                    </MainFooterADMOBContainer>
-                    
-                </MainFooter>
 
 
             </MainContainer>

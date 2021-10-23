@@ -1,4 +1,4 @@
-import {HomeScreen} from './HomeScreen';
+import CategoryListScreen from './Listing/CategoryListScreen';
 export {
-    HomeScreen
+    CategoryListScreen
 }

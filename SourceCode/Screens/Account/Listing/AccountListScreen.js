@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
 
 export default class AccountListScreen extends React.Component {
 
+  
     onAccountPress=()=>{
       this.props.navigation.navigate('AccountDetailScreen');
     }

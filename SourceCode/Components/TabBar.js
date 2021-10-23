@@ -34,7 +34,7 @@ const TabBar = ({ state, descriptors, navigation}: any) =>{
           <View key = {index} style = {[styles.mainItemContainer, {borderRightWidth: label=="notes"? 3:0}]}>
             <Pressable
               onPress = {onPress}
-              style = {{backgroundColor: isFocused?"#563469": "#CE8FF2", borderRadius: 20, }}>
+              style = {{backgroundColor: isFocused?"#EBCFFB": "#CE8FF2", borderRadius: 20, }}>
               <View style = {{justifyContent: 'center', alignItems: 'center', flex: 1, padding: 15}}>
                 <NavigationIcon route={label} isFocused={isFocused}/>
               </View>

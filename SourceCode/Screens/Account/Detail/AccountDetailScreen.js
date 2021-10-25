@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 
 
 const Header = styled.View`
-height: 30%;
+height: 20%;
 width: 100%;
 display:flex;
 flexDirection:row;
@@ -141,15 +141,15 @@ justifyContent:center;
   justifyContent:center;
   `
 const ButtonContainer = styled.View`
-height: 15%;
+height: 10%;
 width: 100%;
 display:flex;
 flexDirection:row;
 alignItems: center;
 justifyContent:space-around;
 `
-const Body = styled.View`
-height: 50%;
+const MainBody = styled.View`
+height: 46%;
 width: 100%;
 display:flex;
 flexDirection:row;
@@ -164,6 +164,8 @@ import ButtonAddExpense from '../../../Components/Buttons/ButtonAddExpense';
 import ButtonViewTransaction from '../../../Components/Buttons/ButtonViewTransaction';
 
 import PieChart from "../../../Components/Charts/PieChart";
+
+import NormalFooter from '../../../Components/HeaderFooter/NormalFooter';
 
 export default class AccountDetailScreen extends React.Component {
 
@@ -235,11 +237,12 @@ export default class AccountDetailScreen extends React.Component {
               </TouchableOpacity>
             </ButtonContainer>
             
-            <Body>
+            <MainBody>
                 <SafeAreaView style={styles.container}>
                 <List data={DATA} />
               </SafeAreaView>
-            </Body>
+            </MainBody>
+            <NormalFooter />
         </MainLayout>
         );
     }

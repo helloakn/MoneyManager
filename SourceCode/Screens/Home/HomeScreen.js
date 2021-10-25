@@ -6,10 +6,30 @@ import {
   Text,
   StyleSheet,StatusBar,SafeAreaView,FlatList
 } from 'react-native';
+import styled from 'styled-components/native';
 
 import MainLayout from "../../Layouts/MainLayout";
 
 import AccountContainer from "../../Components/Listing/AccountContainer";
+
+
+import {
+  Appodeal,
+  AppodealAdType,
+  AppodealBannerEvent,
+  AppodealBanner
+} from 'react-native-appodeal';
+
+//const adTypes = AppodealAdType.INTERSTITIAL | AppodealAdType.REWARDED_VIDEO | AppodealAdType.BANNER;
+const adTypes = AppodealAdType.BANNER;
+const consent = true; // dev or production
+Appodeal.initialize('6a85b68b9931c915bba057e65a6c4b4447426abcb83bbe21', adTypes, consent);
+
+Appodeal.addEventListener(AppodealBannerEvent.FAILED_TO_LOAD, () =>
+    console.log('failed to load banner')
+);
+
+
 
 const DATA = [
   {
@@ -70,7 +90,22 @@ const styles = StyleSheet.create({
   },
 });
 
-
+const Body = styled.View`
+height: 50%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:space-around;
+`
+const Footer = styled.View`
+height: 15%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:space-around;
+`
 
 export default class HomeScreen extends React.Component {
     render() {
@@ -79,14 +114,31 @@ export default class HomeScreen extends React.Component {
       );
         return(
           <MainLayout title="Home Screen" >
+           
+          <Body>
             <SafeAreaView style={styles.container}>
-            <FlatList
-              data={DATA}
-              contentContainerStyle = {{ alignItems: 'center'}}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
+              <FlatList
+                data={DATA}
+                contentContainerStyle = {{ alignItems: 'center'}}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+              />
+            </SafeAreaView>
+          </Body>
+
+
+          <Footer>
+            <AppodealBanner
+                style = {{
+                    height: 50,
+                    width: '100%',
+                    alignContent: 'stretch',
+                }}
+                adSize = 'phone'
+                usesSmartSizing // (iOS specific) on Android smart banners are enabled by default.
             />
-          </SafeAreaView>
+            </Footer>
+
         </MainLayout>
         );
     }

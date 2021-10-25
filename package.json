@@ -15,11 +15,13 @@
     "@react-navigation/native-stack": "^6.2.5",
     "react": "17.0.2",
     "react-native": "0.66.1",
+    "react-native-appodeal": "^2.10.2",
     "react-native-chart-kit": "^6.11.0",
     "react-native-fontawesome": "^7.0.0",
     "react-native-paper": "^4.9.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
+    "react-native-sqlite-storage": "^6.0.1",
     "react-native-svg": "^12.1.1",
     "styled-components": "^5.3.1"
   },

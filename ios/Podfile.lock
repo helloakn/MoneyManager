@@ -1,4 +1,9 @@
 PODS:
+  - Appodeal (2.10.2):
+    - Protobuf (~> 3.12)
+    - StackAnalytics (~> 1.2.0)
+    - StackIAB (~> 1.4.3)
+    - StackModules (~> 1.1.6)
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -74,6 +79,7 @@ PODS:
   - glog (0.3.5)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.180)
+  - Protobuf (3.19.0)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
     - DoubleConversion
@@ -274,6 +280,8 @@ PODS:
     - glog
   - react-native-safe-area-context (3.3.2):
     - React-Core
+  - react-native-sqlite-storage (6.0.1):
+    - React-Core
   - React-perflogger (0.66.1)
   - React-RCTActionSheet (0.66.1):
     - React-Core/RCTActionSheetHeaders (= 0.66.1)
@@ -339,11 +347,74 @@ PODS:
     - React-jsi (= 0.66.1)
     - React-logger (= 0.66.1)
     - React-perflogger (= 0.66.1)
+  - RNAppodeal (2.10.2):
+    - Appodeal (= 2.10.2)
+    - React
+    - StackConsentManager (~> 1.1.0)
   - RNScreens (3.8.0):
     - React-Core
     - React-RCTImage
   - RNSVG (12.1.1):
     - React
+  - StackAnalytics (1.2.1):
+    - StackAnalytics/Full (= 1.2.1)
+    - StackModules (~> 1.1.0)
+  - StackAnalytics/Base (1.2.1):
+    - StackModules (~> 1.1.0)
+  - StackAnalytics/Crashes (1.2.1):
+    - StackModules (~> 1.1.0)
+  - StackAnalytics/Full (1.2.1):
+    - StackAnalytics/Base
+    - StackAnalytics/Crashes
+    - StackModules (~> 1.1.0)
+  - StackConsentManager (1.1.2)
+  - StackIAB (1.4.3):
+    - StackIAB/StackIABAssets (= 1.4.3)
+    - StackIAB/StackMRAIDKit (= 1.4.3)
+    - StackIAB/StackNASTKit (= 1.4.3)
+    - StackIAB/StackOpenMeasure (= 1.4.3)
+    - StackIAB/StackRichMedia (= 1.4.3)
+    - StackIAB/StackVASTAssets (= 1.4.3)
+    - StackIAB/StackVASTKit (= 1.4.3)
+    - StackIAB/StackVideoPlayer (= 1.4.3)
+    - StackIAB/StackXML (= 1.4.3)
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackIABAssets (1.4.3):
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackMRAIDKit (1.4.3):
+    - StackIAB/StackIABAssets
+    - StackIAB/StackOpenMeasure
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackNASTKit (1.4.3):
+    - StackIAB/StackVASTKit
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackOpenMeasure (1.4.3):
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackRichMedia (1.4.3):
+    - StackIAB/StackIABAssets
+    - StackIAB/StackVASTAssets
+    - StackIAB/StackVideoPlayer
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackVASTAssets (1.4.3):
+    - StackIAB/StackIABAssets
+    - StackIAB/StackXML
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackVASTKit (1.4.3):
+    - StackIAB/StackMRAIDKit
+    - StackIAB/StackVASTAssets
+    - StackIAB/StackVideoPlayer
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackVideoPlayer (1.4.3):
+    - StackModules (~> 1.1.0)
+  - StackIAB/StackXML (1.4.3):
+    - StackModules (~> 1.1.0)
+  - StackModules (1.1.7):
+    - StackModules/StackProductPresentation (= 1.1.7)
+  - StackModules/StackFoundation (1.1.7)
+  - StackModules/StackProductPresentation (1.1.7):
+    - StackModules/StackUIKit
+  - StackModules/StackUIKit (1.1.7):
+    - StackModules/StackFoundation
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -390,6 +461,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -402,12 +474,14 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNAppodeal (from `../node_modules/react-native-appodeal`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - Appodeal
     - CocoaAsyncSocket
     - Flipper
     - Flipper-Boost-iOSX
@@ -421,6 +495,11 @@ SPEC REPOS:
     - fmt
     - libevent
     - OpenSSL-Universal
+    - Protobuf
+    - StackAnalytics
+    - StackConsentManager
+    - StackIAB
+    - StackModules
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -460,6 +539,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-sqlite-storage:
+    :path: "../node_modules/react-native-sqlite-storage"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -484,6 +565,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNAppodeal:
+    :path: "../node_modules/react-native-appodeal"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -492,6 +575,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Appodeal: 2fbca4ef766bc50e88b26190f5f3a205a1b667c1
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 831926d9b8bf8166fd87886c4abab286c2422662
@@ -510,6 +594,7 @@ SPEC CHECKSUMS:
   glog: 5337263514dd6f09803962437687240c5dc39aa4
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
+  Protobuf: e9b99dd5da72f665ec503b19191f245a22188b4d
   RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
   RCTRequired: 3cc065b52aa18db729268b9bd78a2feffb4d0f91
   RCTTypeSafety: 3c4fc37d5dea452d2ef17324db5504ec2f05083a
@@ -523,6 +608,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8c0517dee5e8c70cd6c3066f20213ff7ce54f176
   React-logger: bfddd3418dc1d45b77b822958f3e31422e2c179b
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
+  react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   React-perflogger: fcac6090a80e3d967791b4c7f1b1a017f9d4a398
   React-RCTActionSheet: caf5913d9f9e605f5467206cf9d1caa6d47d7ad6
   React-RCTAnimation: 6539e3bf594f6a529cd861985ba6548286ae1ead
@@ -535,11 +621,16 @@ SPEC CHECKSUMS:
   React-RCTVibration: 6600b5eed7c0fda4a433fa1198d1cb2690151791
   React-runtimeexecutor: 33a949a51bec5f8a3c9e8d8092deb259600d761e
   ReactCommon: 620442811dc6f707b4bf5e3b27d4f19c12d5a821
+  RNAppodeal: 293a7cac1e41f452f80cfa88ebc859c7ee26b8b2
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
+  StackAnalytics: 012be5ae16c8f5005eb9a2e1557b37eaaf96f71d
+  StackConsentManager: 667f84fb7ecfa997b978ce3dfdd9809ade0811cd
+  StackIAB: 0229259e7616ea48da76466a325cf7c53ea860cd
+  StackModules: 1c06d847d4bac095da46b8257ddb7b423ccfa305
   Yoga: 2b4a01651f42a32f82e6cef3830a3ba48088237f
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: a96000f717749fb258c8bfc878ef969880c452ee
+PODFILE CHECKSUM: 61bb3b7efd2c3744efa903091a523a381432e48d
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

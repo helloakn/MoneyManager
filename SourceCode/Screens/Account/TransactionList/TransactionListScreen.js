@@ -11,6 +11,7 @@ import styled from 'styled-components/native';
 
 import MainLayout from '../../../Layouts/MainLayout';
 
+import NormalFooter from '../../../Components/HeaderFooter/NormalFooter';
 
 import List from "../../../Components/List";
 let screenWidth = Dimensions.get("window").width;
@@ -156,12 +157,12 @@ const DailyHeader = styled.View`
 
 
 const DailyContainer = styled.View`
-  height: 90%;
+  height: 80%;
   width: 100%;
   display:flex;
-  flexDirection:row;
+  flexDirection:column;
   alignItems: center;
-  justifyContent:space-around;
+  justifyContent:flex-start;
 `
 
 
@@ -192,6 +193,26 @@ bottom:5px;
 padding:5px;
 
 `
+
+
+
+const Body = styled.View`
+height: 70%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:space-around;
+`
+const Footer = styled.View`
+height: 15%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
+justifyContent:space-around;
+`
+
 
 import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
 
@@ -314,6 +335,7 @@ export default class TransactionListScreen extends React.Component {
       
         return(
           <MainLayout title="Transaction" navigation={this.props.navigation} header={<MainHeader navigation={this.props.navigation} onPressYearUP={this.onPressYearUP}/>}  >
+           
             <Header>
                 <HeaderTab isActiveTab={this.state.activeTab=="Daily"?"yes":"no"}>
                   <TouchableOpacity onPress={this.onPressDailyUP}>
@@ -331,25 +353,33 @@ export default class TransactionListScreen extends React.Component {
                   </TouchableOpacity>
                 </HeaderTab>
             </Header>
+
             <HeaderLine />
+
+            
+
+            <DailyContainer>
             <DailyHeader>
               
-            <SafeAreaView style={styles.container}>
-              <FlatList
-                data={this.state.dateData}
-                renderItem={this.renderDay}
-                keyExtractor={item => item.key}
-                horizontal
-              />
-            </SafeAreaView>
+              <SafeAreaView style={styles.container}>
+                <FlatList
+                  data={this.state.dateData}
+                  renderItem={this.renderDay}
+                  keyExtractor={item => item.key}
+                  horizontal
+                />
+              </SafeAreaView>
 
 
             </DailyHeader>
-            <DailyContainer>
+              <Body>
                 <SafeAreaView style={styles.container}>
-                <List data={DATA} />
-              </SafeAreaView>
+                  <List data={DATA} />
+                </SafeAreaView> 
+              </Body>
+              <NormalFooter/>
             </DailyContainer>
+
         </MainLayout>
         );
     }

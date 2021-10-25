@@ -4,7 +4,7 @@ import React from 'react';
 import {Dimensions,
   View,
   Text,
-  StyleSheet,StatusBar,SafeAreaView,FlatList,TouchableOpacity
+  StyleSheet,StatusBar,SafeAreaView,FlatList,TouchableOpacity,NativeEventEmitter
 } from 'react-native';
 
 import styled from 'styled-components/native';
@@ -55,12 +55,19 @@ const styles = StyleSheet.create({
 });
 
 const Body = styled.View`
-height: 100%;
+height: 75%;
 width: 100%;
 display:flex;
 flexDirection:row;
 alignItems: center;
-// justifyContent:center;
+justifyContent:space-around;
+`
+const Footer = styled.View`
+height: 15%;
+width: 100%;
+display:flex;
+flexDirection:row;
+alignItems: center;
 justifyContent:space-around;
 `
 
@@ -130,6 +137,27 @@ class MainHeader extends React.Component{
   
 }
 
+import {
+  Appodeal,
+  AppodealAdType,
+  AppodealBannerEvent
+} from 'react-native-appodeal';
+
+//const adTypes = AppodealAdType.INTERSTITIAL | AppodealAdType.REWARDED_VIDEO | AppodealAdType.BANNER;
+const adTypes = AppodealAdType.BANNER;
+const consent = true; // dev or production
+Appodeal.initialize('6a85b68b9931c915bba057e65a6c4b4447426abcb83bbe21', adTypes, consent);
+
+Appodeal.addEventListener(AppodealBannerEvent.FAILED_TO_LOAD, () =>
+    console.log('failed to load banner')
+);
+
+
+import {
+  AppodealBanner
+} from 'react-native-appodeal';
+
+
 export default class AccountDetailScreen extends React.Component {
 
     onAccountPress=()=>{
@@ -152,6 +180,18 @@ export default class AccountDetailScreen extends React.Component {
                 <CategoryList data={DATA} />
               </SafeAreaView>
             </Body>
+
+            <Footer>
+            <AppodealBanner
+                style = {{
+                    height: 50,
+                    width: '100%',
+                    alignContent: 'stretch',
+                }}
+                adSize = 'phone'
+                usesSmartSizing // (iOS specific) on Android smart banners are enabled by default.
+            />
+            </Footer>
         </MainLayout>
         );
     }

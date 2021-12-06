@@ -9,7 +9,14 @@ const Stack = createNativeStackNavigator();
 
 
 
-import {AccountListScreen,AccountDetailScreen,TransactionListScreen} from '../Screens/Account';
+import {
+    AccountListScreen,AccountDetailScreen,
+    AddAccountScreen
+} from '../Screens/Account';
+import {
+    TransactionListScreen,
+    AddExpenseScreen
+} from '../Screens/Transaction';
 import {CategoryListScreen} from '../Screens/Category';
 
 import TabBar from '../Components/TabBar';
@@ -32,7 +39,9 @@ function AccountTabs(){
         <Stack.Navigator initialRouteName={"AccountListScreen"} screenOptions={{headerShown:false}}>
             <Stack.Screen name="AccountListScreen" component={AccountListScreen} options={{ headerShown: false,}}/>
             <Stack.Screen name="AccountDetailScreen" component={AccountDetailScreen} options={{ headerShown: false,}}/>
+            <Stack.Screen name="AddAccountScreen" component={AddAccountScreen} options={{ headerShown: false,}}/>
             <Stack.Screen name="TransactionListScreen" component={TransactionListScreen} options={{ headerShown: false,}}/>
+            <Stack.Screen name="AddExpenseScreen" component={AddExpenseScreen} options={{ headerShown: false,}}/>
         </Stack.Navigator>
     );
 }

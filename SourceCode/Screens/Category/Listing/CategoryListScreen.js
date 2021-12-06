@@ -15,6 +15,9 @@ import MainLayout from '../../../Layouts/MainLayout';
 
 
 import CategoryList from "../../../Components/Listing/CategoryList";
+
+import MainHeader from '../../../Components/HeaderFooter/MainHeader';
+
 let screenWidth = Dimensions.get("window").width-40;
 
 
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
 });
 
 const Body = styled.View`
-height: 75%;
+height: 90%;
 width: 100%;
 display:flex;
 flexDirection:row;
@@ -63,7 +66,7 @@ alignItems: center;
 justifyContent:space-around;
 `
 const Footer = styled.View`
-height: 15%;
+height: 10%;
 width: 100%;
 display:flex;
 flexDirection:row;
@@ -110,33 +113,6 @@ const Caption = styled.Text`
 `
 
 
-class MainHeader extends React.Component{
-  render(){
-      return(
-          <MainHeaderContainer >
-              <MainHeaderLeft>
-                <TouchableOpacity style={{display:'flex',flexDirection:'row',alignItems:'center'}} onPress={()=>{this.props.navigation.goBack();}}>
-                  <FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.chevronLeft} />
-                 
-                </TouchableOpacity>
-              </MainHeaderLeft>
-              <MainHeaderMid>
-              <Caption style={{ fontSize:20,color:'#ffffff',padding:3}}>Category</Caption>
-              </MainHeaderMid>
-              <MainHeaderRight>
-                
-                  
-                  
-                  <TouchableOpacity style={{right:5}} onPress={this.props.onPressYearUP}>
-                      <FontAwesome style={{color:'#ffffff',fontSize:20}} icon={SolidIcons.plus} />
-                  </TouchableOpacity>
-              </MainHeaderRight>
-          </MainHeaderContainer>
-      );
-  }
-  
-}
-
 import {
   Appodeal,
   AppodealAdType,
@@ -172,15 +148,8 @@ export default class AccountDetailScreen extends React.Component {
       
       
         return(
-          <MainLayout navigation={this.props.navigation}  header={<MainHeader navigation={this.props.navigation} onPressYearUP={this.onPressYearUP}/>}>
+          <MainLayout navigation={this.props.navigation}  header={<MainHeader ScreenTitle="Category" ableBack navigation={this.props.navigation} onPressYearUP={this.onPressYearUP}/>}>
             
-            
-            <Body>
-                <SafeAreaView style={styles.container}>
-                <CategoryList data={DATA} />
-              </SafeAreaView>
-            </Body>
-
             <Footer>
             <AppodealBanner
                 style = {{
@@ -192,6 +161,13 @@ export default class AccountDetailScreen extends React.Component {
                 usesSmartSizing // (iOS specific) on Android smart banners are enabled by default.
             />
             </Footer>
+            <Body>
+                <SafeAreaView style={styles.container}>
+                <CategoryList data={DATA} />
+              </SafeAreaView>
+            </Body>
+
+            
         </MainLayout>
         );
     }

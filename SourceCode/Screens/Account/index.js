@@ -1,7 +1,6 @@
 import AccountListScreen from './Listing/AccountListScreen';
 import AccountDetailScreen from './Detail/AccountDetailScreen';
-import TransactionListScreen from './TransactionList/TransactionListScreen'
+import AddAccountScreen from './AddAccount/AddAccountScreen';
 export {
-    AccountListScreen,AccountDetailScreen,
-    TransactionListScreen
+    AccountListScreen,AccountDetailScreen,AddAccountScreen
 }

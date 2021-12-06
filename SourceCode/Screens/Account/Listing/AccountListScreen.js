@@ -13,6 +13,7 @@ import MainLayout from '../../../Layouts/MainLayout';
 import NormalHeader from '../../../Components/HeaderFooter/NormalHeader';
 
 import AccountContainer from "../../../Components/Listing/AccountContainer";
+import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
 
 
 
@@ -97,21 +98,25 @@ const styles = StyleSheet.create({
 
 
 const Body = styled.View`
-height: 75%;
+height: 100%;
 width: 100%;
 display:flex;
 flexDirection:row;
 alignItems: center;
 justifyContent:space-around;
 `
-const Footer = styled.View`
-height: 15%;
+const Header = styled.View`
+height: 10%;
 width: 100%;
 display:flex;
 flexDirection:row;
 alignItems: center;
 justifyContent:space-around;
+position:absolute;
+zIndex:100000;
+backgroundColor:rgba(235, 207, 251, 0.8);
 `
+import MainHeader from '../../../Components/HeaderFooter/MainHeader';
 
 export default class AccountListScreen extends React.Component {
 
@@ -120,14 +125,50 @@ export default class AccountListScreen extends React.Component {
       this.props.navigation.navigate('AccountDetailScreen');
     }
 
+    OnAddAccount=()=>{
+      this.props.navigation.navigate('AddAccountScreen');
+    }
     render() {
-      const renderItem = ({ item }) => (
+      const renderItem = ({ item ,index}) => (
         <TouchableOpacity onPress={this.onAccountPress} >
-        <AccountContainer title={item.title} />
+          {index==0?
+            <View style={{width:'100%',height:70}}></View>
+          :
+          <></>}
+          <AccountContainer title={item.title} />
         </TouchableOpacity>
       );
         return(
-          <MainLayout navigation={this.props.navigation}  header={<NormalHeader hideBack="yes" title="Account" navigation={this.props.navigation} onPressYearUP={this.onPressYearUP}/>}>
+          <MainLayout navigation={this.props.navigation}  
+            header={
+                    <MainHeader 
+                      customIcon={
+                        <TouchableOpacity 
+                          style={{right:5}} 
+                          onPress={this.OnAddAccount}>
+                          <FontAwesome 
+                            style={{color:'#ffffff',fontSize:20}} 
+                            icon={SolidIcons.userPlus} 
+                          />
+                        </TouchableOpacity>
+                      }  
+                      ScreenTitle="Money Tracker" 
+                      navigation={this.props.navigation} 
+                      onPressYearUP={this.onPressYearUP}
+                    />
+                  }
+          >
+            <Header>
+              <AppodealBanner
+                  style = {{
+                      height: 50,
+                      width: '100%',
+                      alignContent: 'stretch',
+                  }}
+                  adSize = 'phone'
+                  usesSmartSizing // (iOS specific) on Android smart banners are enabled by default.
+              />
+            </Header>
             <Body>
               <SafeAreaView style={styles.container}>
               <FlatList
@@ -138,17 +179,7 @@ export default class AccountListScreen extends React.Component {
               />
             </SafeAreaView>
             </Body>
-            <Footer>
-              <AppodealBanner
-                  style = {{
-                      height: 50,
-                      width: '100%',
-                      alignContent: 'stretch',
-                  }}
-                  adSize = 'phone'
-                  usesSmartSizing // (iOS specific) on Android smart banners are enabled by default.
-              />
-            </Footer>
+            
         </MainLayout>
         );
     }

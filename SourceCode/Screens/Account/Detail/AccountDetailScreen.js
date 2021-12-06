@@ -149,7 +149,7 @@ alignItems: center;
 justifyContent:space-around;
 `
 const MainBody = styled.View`
-height: 46%;
+height: 66%;
 width: 100%;
 display:flex;
 flexDirection:row;
@@ -177,11 +177,15 @@ export default class AccountDetailScreen extends React.Component {
       this.props.navigation.navigate('TransactionListScreen');
     }
 
+    onPressAddExpense=()=>{
+      this.props.navigation.navigate('AddExpenseScreen');
+    }
+
     render() {
       
       
         return(
-          <MainLayout title="AccountDetailScreen" navigation={this.props.navigation}>
+          <MainLayout title="Account Detail"  navigation={this.props.navigation}>
             <Header>
               <HeaderLeft>
                 <PieChart />
@@ -228,7 +232,7 @@ export default class AccountDetailScreen extends React.Component {
                 <ButtonAddIncome />
               </TouchableOpacity>
 
-              <TouchableOpacity style={{alignItems: 'center',width:'30%',height:'100%'}} onPress={this.onPressViewTransactions}>
+              <TouchableOpacity style={{alignItems: 'center',width:'30%',height:'100%'}} onPress={this.onPressAddExpense}>
                 <ButtonAddExpense />
               </TouchableOpacity>
 
@@ -236,13 +240,13 @@ export default class AccountDetailScreen extends React.Component {
                 <ButtonViewTransaction />
               </TouchableOpacity>
             </ButtonContainer>
-            
+            <NormalFooter />
             <MainBody>
                 <SafeAreaView style={styles.container}>
                 <List data={DATA} />
               </SafeAreaView>
             </MainBody>
-            <NormalFooter />
+            
         </MainLayout>
         );
     }

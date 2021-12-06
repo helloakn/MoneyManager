@@ -27,7 +27,7 @@ import {
 
 
 const Footer = styled.View`
-height: 15%;
+height: 10%;
 width: 100%;
 display:flex;
 flexDirection:row;

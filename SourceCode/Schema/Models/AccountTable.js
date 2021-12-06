@@ -40,6 +40,22 @@ class AccountTable extends Table {
         await this.createTable(this.db,this.tableName,this.columns);
     };
 
+    InsertData = async (_name,_income,_expense,_balance) => {
+        console.log(_name);
+        console.log('Inserting table name');
+        console.log(this.tableName);
+        console.log('end Inserting table name');
+        let tmpColumns = this.columns;
+        tmpColumns.splice(0,1);
+        const query = `INSERT INTO ${this.tableName} (name,income,expense,balance) VALUES("${_name}",${_income},${_expense},${_balance});`;
+        console.log(query);
+        await db.executeSql(query,[],function(t,r){
+            //alert(_callBackFunction);
+             console.log('succesully inserted new record');
+             
+         });
+    };
+
     seedData = async () => {
         console.log('seeding table name');
         console.log(this.tableName);
